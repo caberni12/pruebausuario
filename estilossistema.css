@@ -1,33 +1,44 @@
+/* --- BASE GENERAL --- */
 body {
   font-family: Arial, sans-serif;
   background: #f3f3f3;
-  padding: 5px 20px 20px 20px; /* menos espacio arriba */
+  padding: 5px 20px 20px 20px;
+  margin: 0;
 }
 
 .logo-container {
   text-align: center;
-  margin-bottom: 5px; /* menos espacio debajo del logo */
+  margin-bottom: 5px;
 }
 
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- FORMULARIO RESPONSIVO --- */
 form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   background: #080808;
   padding: 10px;
   border-radius: 10px;
-  margin-top: 0; /* quita margen arriba */
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
-textarea, select {
+textarea,
+select {
   grid-column: span 2;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   padding: 10px;
   font-size: 16px;
-  width: auto;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
@@ -35,6 +46,7 @@ input, textarea, select {
 .botones {
   grid-column: span 2;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -44,8 +56,11 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 6px;
+  flex: 1;
+  min-width: 120px;
 }
 
+/* --- COLORES DE BOTONES --- */
 .btn-guardar {
   background-color: #28a745;
   color: white;
@@ -62,17 +77,21 @@ button {
   color: white;
 }
 
+/* --- TABLA RESPONSIVA --- */
 #tabla {
   width: 100%;
   border-collapse: collapse;
   background: #0c0c0c;
   color: #faf9f9;
+  overflow-x: auto;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #049afdcc;
   padding: 10px;
   font-size: 14px;
+  text-align: left;
 }
 
 th {
@@ -84,27 +103,57 @@ thead tr.filtros th {
   background-color: #f9f9f9;
 }
 
-thead tr.filtros th input {
-  width: 90%;
-  padding: 4px;
-  box-sizing: border-box;
-  font-size: 0.9em;
-}
-
+thead tr.filtros th input,
 thead tr.filtros th select {
   width: 100%;
-  padding: 4px 6px;
-  box-sizing: border-box;
+  padding: 4px;
   font-size: 0.9em;
+  box-sizing: border-box;
 }
 
-.logo-container img {
-  max-width: 200px;
-  height: auto;
-}
-
+/* --- ENLACES --- */
 .telefono-link {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .botones {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    border: 1px solid #049afdcc;
+    margin-bottom: 10px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-weight: bold;
+    color: #049afd;
+  }
 }
