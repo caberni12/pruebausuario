@@ -20,34 +20,63 @@ body {
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 16px;
   background: #080808;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-textarea,
-select {
+/* CAMPO NOMBRE MÁS PEQUEÑO */
+input.nombre {
+  font-size: 14px;
+  padding: 8px;
+}
+
+/* CAMPO MENSAJE (MENOR ALTURA) */
+textarea {
   grid-column: span 2;
+  height: 80px;
+  resize: vertical;
 }
 
+/* CAMPO BÚSQUEDA MENOS ANCHO */
+input.busqueda,
+input[type="search"] {
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+/* CAMPOS GENERALES */
 input,
 textarea,
 select {
   padding: 10px;
   font-size: 16px;
   width: 100%;
+  max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
+/* BOTONES */
 .botones {
   grid-column: span 2;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: flex-start; /* Alinear a la izquierda */
 }
 
 button {
@@ -58,9 +87,10 @@ button {
   border-radius: 6px;
   flex: 1;
   min-width: 120px;
+  max-width: 200px;
 }
 
-/* --- COLORES DE BOTONES --- */
+/* COLORES DE BOTONES */
 .btn-guardar {
   background-color: #28a745;
   color: white;
@@ -77,13 +107,15 @@ button {
   color: white;
 }
 
-/* --- TABLA RESPONSIVA --- */
+/* TABLA RESPONSIVA */
 #tabla {
   width: 100%;
   border-collapse: collapse;
   background: #0c0c0c;
   color: #faf9f9;
-  overflow-x: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 th,
@@ -111,17 +143,18 @@ thead tr.filtros th select {
   box-sizing: border-box;
 }
 
-/* --- ENLACES --- */
+/* ENLACES */
 .telefono-link {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
 }
 
-/* --- MEDIA QUERIES --- */
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
   form {
     grid-template-columns: 1fr;
+    padding: 20px 15px;
   }
 
   .botones {
@@ -131,10 +164,17 @@ thead tr.filtros th select {
 
   button {
     width: 100%;
+    max-width: 100%;
   }
 
-  table, thead, tbody, th, td, tr {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
+    width: 100%;
   }
 
   thead {
@@ -146,6 +186,7 @@ thead tr.filtros th select {
     padding-left: 50%;
     border: 1px solid #049afdcc;
     margin-bottom: 10px;
+    background-color: #111;
   }
 
   td::before {
@@ -155,5 +196,6 @@ thead tr.filtros th select {
     top: 10px;
     font-weight: bold;
     color: #049afd;
+    white-space: nowrap;
   }
 }

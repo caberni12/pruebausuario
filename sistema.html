@@ -32,6 +32,8 @@
   
 <h2>Registro Cliente RapidFlex</h2>
 
+
+
 <form id="formulario">
   <input type="hidden" id="fila">
   <input type="text" id="nombre" placeholder="Nombre" required>
@@ -48,6 +50,7 @@
     <button type="submit" class="btn-guardar">💾 Guardar</button>
     <button type="button" onclick="cancelarEdicion()" class="btn-cancelar">❌ Cancelar</button>
   </div>
+  
 </form>
 
 <h3>Lista de Registros</h3>
@@ -55,6 +58,7 @@
 
 
 <input type="text" id="buscador" placeholder="Buscar en registros..." oninput="filtrarTabla()" />
+
 
 <button onclick="obtenerDatos()" class="btn-recargar">🔄 Recargar</button>
 
@@ -69,6 +73,8 @@ function mostrarMensaje() {
   alert("🚧 Sitio en desarrollo. Próximamente disponible.");
 }
 </script>
+
+
 
 
 <table id="tabla">
