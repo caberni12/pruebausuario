@@ -1,0 +1,174 @@
+/* --- ESTILO GENERAL --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* --- LOGIN CENTRADO --- */
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+}
+
+form {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 320px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #4CAF50, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #43a047, #1b5e20);
+  transform: scale(1.05);
+}
+
+#mensaje {
+  margin-top: 15px;
+  font-size: 14px;
+  color: red;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+.menu-btn:hover {
+  background-color: #2e7d32;
+}
+
+/* --- SLIDER LATERAL OCULTO --- */
+.slider {
+  position: fixed;
+  top: 0;
+  left: -250px; /* oculto inicialmente */
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  color: white;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  padding-top: 60px;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.slider.open {
+  left: 0; /* visible */
+}
+
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.slider-content h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 1px solid #777;
+  padding-bottom: 10px;
+}
+
+.slider-content a, .slider-content button {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.slider-content a:hover, .slider-content button:hover {
+  background-color: #388e3c;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.contenido {
+  margin-left: 0;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+/* Cuando el slider está abierto, desplaza el contenido */
+.slider.open ~ .contenido {
+  margin-left: 250px;
+}
+
+/* --- CONTENEDOR DE TODO EL CONTENIDO RESTRINGIDO --- */
+#contenido {
+  display: none; /* Se mostrará solo tras login */
+  min-height: 100vh;
+  background-color: #fff;
+}

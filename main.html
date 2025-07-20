@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slider Lateral Oculto</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body onload="verificarSesion()">
+
+  <!-- CONTENIDO RESTRINGIDO -->
+  <div id="contenido" style="display: none;">
+
+    <!-- Botón hamburguesa -->
+    <button class="menu-btn" onclick="toggleSlider()">☰</button>
+
+    <!-- Slider lateral oculto -->
+    <div id="slider" class="slider">
+      <div class="slider-content">
+        <h2>Menú</h2>
+        <a href="#">Registro Repartidor</a>
+        <a href="#">Registro Clientes</a>
+        <a href="#">Accesos y Permisos</a>
+        <button onclick="cerrarSesion()" style="margin-top: 20px; padding: 10px; border-radius: 6px; background: #e53935; color: white; border: none; cursor: pointer;">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+      <!-- Aquí va el contenido principal de tu app -->
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
