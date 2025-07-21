@@ -143,6 +143,17 @@ thead tr.filtros th select {
   box-sizing: border-box;
 }
 
+/* Botones dentro de celdas de la tabla */
+td button {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
 /* ENLACES */
 .telefono-link {
   color: blue;
@@ -160,6 +171,8 @@ thead tr.filtros th select {
   .botones {
     flex-direction: column;
     gap: 12px;
+    justify-content: center;
+    align-items: center;
   }
 
   button {
@@ -184,9 +197,13 @@ thead tr.filtros th select {
   td {
     position: relative;
     padding-left: 50%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 12px;
     border: 1px solid #049afdcc;
-    margin-bottom: 10px;
-    background-color: #111;
+    background-color: #1c1c1c;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 
   td::before {
@@ -195,8 +212,15 @@ thead tr.filtros th select {
     left: 10px;
     top: 10px;
     font-weight: bold;
-    color: #049afd;
+    color: #00bfff;
     white-space: nowrap;
+  }
+
+  td button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
   }
 }
 
@@ -208,52 +232,88 @@ thead tr.filtros th select {
   text-align: right;
 }
 
-/* --- LOADER CIRCULAR GRANDE (PELOTA DE BÉISBOL) --- */
-.loader-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.5);
+/* --- LOADER UBICADO ENTRE FORMULARIO Y TABLA --- */
+.loader-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  margin: 40px 0;
 }
 
 .loader {
-  border: 12px solid #f3f3f3; /* Color claro del borde */
-  border-top: 12px solid #030303; /* Color azul para el giro */
+  border: 12px solid #141414;
+  border-top: 12px solid #f8f4f4;
   border-radius: 50%;
-  width: 350px;  /* Tamaño grande tipo pelota de béisbol */
-  height: 350px;
-  animation: spin 1.0s linear infinite;
-  margin-left: 40%;
-  margin-top: 15%;
+  width: 300px;
+  height: 300px;
+  margin-top: -10%;
+  margin-left: 42%;
+  animation: spin 1s linear infinite;
   box-shadow:
-    inset 0 0 10px #070707,
-    0 0 15px #0c0c0c;
+    inset 0 0 10px #080808,
+    0 0 15px #080808,
 }
 
+/* Ocultar por defecto si se controla por JavaScript */
+.loader-wrapper.hidden {
+  display: none;
+}
+
+/* Animación del loader */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Animación */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* 📱 Responsive loader para pantallas pequeñas */
+/* Responsive loader */
 @media (max-width: 480px) {
   .loader {
     width: 50px;
     height: 50px;
-    border: 6px solid #e0e0e0;
-    border-top: 6px solid #007bff;
+    border: 6px solid #faf5f5;
+    border-top: 6px solid #000;
+  }
+}
+
+/* --- LOADER UBICADO ENTRE FORMULARIO Y TABLA --- */
+.loader-wrapper2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.loader2 {
+  border: 12px solid #141414;
+  border-top: 12px solid #f8f4f4;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin-top: 10%;
+  margin-left: 42%;
+  animation: spin 1s linear infinite;
+  box-shadow:
+    inset 0 0 10px #080808,
+    0 0 15px #131212;
+}
+
+/* Ocultar por defecto si se controla por JavaScript */
+.loader-wrapper2.hidden {
+  display: none;
+}
+
+/* Animación del loader */
+@keyframes spin2 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive loader */
+@media (max-width: 480px) {
+  .loader2 {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #faf5f5;
+    border-top: 6px solid #000;
   }
 }
