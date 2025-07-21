@@ -222,8 +222,8 @@ td button {
 
   button {
     width: 100% !important;
-    max-width: 280px;
-    font-size: 14px;
+    max-width: 300px;
+    font-size: 16px;
     text-align: center;
   }
 
@@ -249,35 +249,40 @@ td button {
 
   td {
     position: relative;
-    padding-left: 50%;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 16px 10px 16px 50%;
     margin-bottom: 12px;
     border: 1px solid #049afdcc;
     background-color: #1c1c1c;
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   td::before {
     content: attr(data-label);
     position: absolute;
-    left: 8px;
-    top: 8px;
+    left: 10px;
+    top: 10px;
     font-weight: bold;
     color: #00bfff;
     font-size: 13px;
     text-align: left;
+    width: 45%;
+    white-space: normal;
   }
 
   td button {
-    display: block;
-    margin: 10px auto 0 auto;
-    width: 90%;
-    max-width: 220px;
-    font-size: 15px;
+    display: inline-block;
+    width: 80%;
+    max-width: 240px;
+    font-size: 16px;
+    margin: 8px auto 0 auto;
+    padding: 10px 12px;
+    text-align: center;
   }
 
   .loader {
