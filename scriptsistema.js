@@ -1,4 +1,3 @@
-
 const URL_GET = 'https://script.google.com/macros/s/AKfycbyF3Sm6EdMFACjlT1d_pOJl1AL6UiBzUzSXkdTPt26wRMNuJQ75Sz1Eny-oskfl7KlcbQ/exec';
 const URL_POST = 'https://script.google.com/macros/s/AKfycbzUt7MvtE7XvuWL7p4VUilHQg3zoFwwrcGZgqJ7I71XfkxiR98ohLYPVuVWwJKv_bYjew/exec';
 
@@ -38,39 +37,44 @@ function cancelarEdicion() {
 }
 
 function obtenerDatos() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'block'; // Mostrar loader
+
   fetch(URL_GET)
     .then(r => r.json())
     .then(data => {
+      // Ordenar por fecha descendente (más nuevo primero)
+      data.sort((a, b) => new Date(b["fecha y hora"]) - new Date(a["fecha y hora"]));
+
       tabla.innerHTML = "";
       data.forEach((item, i) => {
         const fila = i + 2;
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${formatearFechaHora(item["fecha y hora"]) || ""}</td>
-<td>${item.nombre || ""}</td>
-<td>${item.email || ""}</td>
-<td>${item.telefono || ""}</td>
-<td>${item.mensaje || ""}</td>
-<td>${item.status || ""}</td>
-
-
+          <td>${item.nombre || ""}</td>
+          <td>${item.email || ""}</td>
+          <td>${item.telefono || ""}</td>
+          <td>${item.mensaje || ""}</td>
+          <td>${item.status || ""}</td>
+          <td>
             <button onclick='editar(${JSON.stringify(item)}, ${fila})'>✏️</button>
             <button onclick='eliminar(${fila})'>🗑️</button>
           </td>
         `;
         tabla.appendChild(tr);
       });
+
+      llenarFiltrosSelect();
     })
     .catch(err => {
       console.error("Error al obtener datos:", err);
       alert("Error al cargar los datos.");
+    })
+    .finally(() => {
+      loader.style.display = 'none'; // Ocultar loader
     });
-
-    
-
-
-  }
-
+}
 
 function editar(item, fila) {
   form.fila.value = fila;
@@ -123,7 +127,6 @@ function generarPDF() {
     status: 240
   };
 
-  // Encabezados
   doc.setFont("helvetica", "bold");
   doc.text("Fecha", cols.fecha, y);
   doc.text("Nombre", cols.nombre, y);
@@ -134,12 +137,12 @@ function generarPDF() {
 
   doc.setFont("helvetica", "normal");
 
-  // Solo filas visibles (filtradas)
-  document.querySelectorAll("#tabla tbody tr").forEach(row => {
-    if (row.style.display === "none") return;  // saltar filas ocultas
+  const filas = Array.from(document.querySelectorAll("#tabla tbody tr")).reverse();
+
+  filas.forEach(row => {
+    if (row.style.display === "none") return;
 
     const celdas = row.querySelectorAll("td");
-
     if (celdas.length >= 6) {
       const fechaRaw = celdas[0].innerText.trim();
       const fechaObj = new Date(fechaRaw);
@@ -195,22 +198,16 @@ function generarPDF() {
 }
 
 function exportarExcel() {
-  // Requiere que XLSX esté cargado globalmente con:
-  // <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-
   const wb = XLSX.utils.book_new();
+  const ws_data = [["Fecha", "Nombre", "Email", "Teléfono", "Mensaje", "Status"]];
 
-  // Encabezados
-  const ws_data = [
-    ["Fecha", "Nombre", "Email", "Teléfono", "Mensaje", "Status"]
-  ];
+  const filas = Array.from(document.querySelectorAll("#tabla tbody tr")).reverse();
 
-  document.querySelectorAll("#tabla tbody tr").forEach(row => {
-    if (row.style.display === "none") return; // saltar filas ocultas
+  filas.forEach(row => {
+    if (row.style.display === "none") return;
 
     const celdas = row.querySelectorAll("td");
     if (celdas.length >= 6) {
-      // Formatear fecha igual que en PDF
       const fechaRaw = celdas[0].innerText.trim();
       const fechaObj = new Date(fechaRaw);
       const fechaFormateada = isNaN(fechaObj)
@@ -241,18 +238,13 @@ function filtrarTabla() {
     const celdas = fila.querySelectorAll('td');
     let textoFila = '';
 
-    for(let i = 0; i < celdas.length; i++) {
+    for (let i = 0; i < celdas.length; i++) {
       textoFila += celdas[i].textContent.trim().toLowerCase() + ' ';
     }
-
-    console.log(textoFila);
 
     fila.style.display = textoFila.includes(filtro) ? '' : 'none';
   });
 }
-
-
-
 
 function limpiarFiltro() {
   document.getElementById('buscador').value = '';
@@ -289,7 +281,6 @@ function llenarFiltrosSelect() {
     const select = document.getElementById(id);
     if (!select) return;
 
-    // Obtener valores únicos de esa columna
     const valores = new Set();
     document.querySelectorAll("#tabla tbody tr").forEach(fila => {
       const celdas = fila.querySelectorAll("td");
@@ -298,10 +289,7 @@ function llenarFiltrosSelect() {
       }
     });
 
-    // Limpiar select excepto la opción "Todos"
     select.innerHTML = '<option value="">Todos</option>';
-
-    // Agregar opciones ordenadas alfabéticamente
     Array.from(valores).sort().forEach(valor => {
       const option = document.createElement("option");
       option.value = valor;
@@ -310,7 +298,3 @@ function llenarFiltrosSelect() {
     });
   });
 }
-
-
-
-  
