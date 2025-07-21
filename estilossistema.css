@@ -30,33 +30,7 @@ form {
   box-sizing: border-box;
 }
 
-/* CAMPO NOMBRE MÁS PEQUEÑO */
-input.nombre {
-  font-size: 14px;
-  padding: 8px;
-}
-
-/* CAMPO MENSAJE (MENOR ALTURA) */
-textarea {
-  grid-column: span 2;
-  height: 80px;
-  resize: vertical;
-}
-
-/* CAMPO BÚSQUEDA MENOS ANCHO */
-input.busqueda,
-input[type="search"] {
-  max-width: 300px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-}
-
-/* CAMPOS GENERALES */
+/* CAMPOS */
 input,
 textarea,
 select {
@@ -67,6 +41,30 @@ select {
   border: 1px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+input.nombre {
+  font-size: 14px;
+  padding: 8px;
+}
+
+textarea {
+  grid-column: span 2;
+  height: 80px;
+  resize: vertical;
+}
+
+input.busqueda,
+input[type="search"] {
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   background-color: #fff;
 }
 
@@ -90,7 +88,6 @@ button {
   max-width: 200px;
 }
 
-/* COLORES DE BOTONES */
 .btn-guardar {
   background-color: #28a745;
   color: white;
@@ -107,7 +104,7 @@ button {
   color: white;
 }
 
-/* TABLA RESPONSIVA */
+/* TABLA */
 #tabla {
   width: 100%;
   border-collapse: collapse;
@@ -123,7 +120,7 @@ td {
   border: 1px solid #049afdcc;
   padding: 10px;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
 }
 
 th {
@@ -143,7 +140,6 @@ thead tr.filtros th select {
   box-sizing: border-box;
 }
 
-/* Botones dentro de celdas de la tabla */
 td button {
   padding: 6px 10px;
   font-size: 14px;
@@ -152,6 +148,8 @@ td button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
 }
 
 /* ENLACES */
@@ -161,7 +159,7 @@ td button {
   cursor: pointer;
 }
 
-/* NUEVA CLASE PARA MOSTRAR NOMBRE */
+/* USUARIO */
 .usuario-nombre {
   color: #007bff;
   font-weight: bold;
@@ -169,7 +167,7 @@ td button {
   text-align: right;
 }
 
-/* --- LOADER UBICADO ENTRE FORMULARIO Y TABLA --- */
+/* LOADER */
 .loader-wrapper {
   display: flex;
   justify-content: center;
@@ -183,72 +181,58 @@ td button {
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  margin-top: -10%;
-  margin-left: 42%;
   animation: spin 1s linear infinite;
   box-shadow: inset 0 0 10px #080808, 0 0 15px #080808;
 }
 
-/* Ocultar por defecto si se controla por JavaScript */
 .loader-wrapper.hidden {
   display: none;
 }
 
-/* Animación del loader */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* MEDIA QUERY PARA MOVILES */
+/* --- VERSION MÓVIL --- */
 @media (max-width: 768px) {
-  body,
-  input,
-  textarea,
-  select,
-  button,
-  td,
-  th {
-    font-size: 14px !important;
-  }
-
-  .logo-container,
-  .usuario-nombre {
-    text-align: center !important;
+  body {
+    font-size: 14px;
   }
 
   form {
     grid-template-columns: 1fr;
-    padding: 20px 15px;
+    padding: 15px;
     gap: 12px;
   }
 
   input,
   textarea,
   select {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: block;
+    font-size: 14px !important;
     margin-bottom: 10px;
   }
 
   .botones {
     flex-direction: column;
-    gap: 12px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
 
   button {
-    width: 100%;
-    max-width: 300px;
+    width: 100% !important;
+    max-width: 280px;
+    font-size: 14px;
     text-align: center;
   }
 
+  .usuario-nombre {
+    text-align: center !important;
+    font-size: 14px;
+  }
+
+  /* TABLA RESPONSIVA */
   table,
   thead,
   tbody,
@@ -285,32 +269,22 @@ td button {
     font-weight: bold;
     color: #00bfff;
     font-size: 13px;
-    white-space: nowrap;
     text-align: left;
   }
 
   td button {
     display: block;
     margin: 10px auto 0 auto;
-    width: 100%;
-    max-width: 200px;
-    font-size: 16px;
-    text-align: center;
+    width: 90%;
+    max-width: 220px;
+    font-size: 15px;
   }
 
   .loader {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-}
-
-/* LOADER MUY PEQUEÑO EN PANTALLAS PEQUEÑAS */
-@media (max-width: 480px) {
-  .loader {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border: 6px solid #faf5f5;
     border-top: 6px solid #000;
+    margin: 30px auto;
   }
 }
