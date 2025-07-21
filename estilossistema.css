@@ -16,10 +16,10 @@ body {
   height: auto;
 }
 
-/* --- FORMULARIO RESPONSIVO --- */
+/* --- FORMULARIO --- */
 form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   background: #080808;
   padding: 20px;
@@ -83,8 +83,8 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  flex: 1;
   min-width: 120px;
+  flex: 1 1 auto;
   max-width: 200px;
 }
 
@@ -113,13 +113,13 @@ button {
   margin-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
+  font-size: 14px;
 }
 
 th,
 td {
   border: 1px solid #049afdcc;
   padding: 10px;
-  font-size: 14px;
   text-align: center;
 }
 
@@ -148,8 +148,7 @@ td button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
-  display: inline-block;
-  margin-top: 8px;
+  margin: 4px;
 }
 
 /* ENLACES */
@@ -194,95 +193,37 @@ td button {
   100% { transform: rotate(360deg); }
 }
 
-/* --- VERSION MÓVIL --- */
+/* --- VERSION MÓVIL FLUIDA (manteniendo estructura de escritorio) --- */
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
   form {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     padding: 15px;
     gap: 12px;
   }
 
-  input,
-  textarea,
-  select {
-    font-size: 14px !important;
-    margin-bottom: 10px;
-  }
-
   .botones {
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 12px;
   }
 
   button {
-    width: 100% !important;
-    max-width: 300px;
-    font-size: 16px;
-    text-align: center;
+    font-size: 15px;
+    min-width: 140px;
+    max-width: 100%;
   }
 
   .usuario-nombre {
-    text-align: center !important;
+    text-align: center;
     font-size: 14px;
   }
 
-  /* TABLA RESPONSIVA */
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-    width: 100%;
-  }
-
-  thead {
-    display: none;
-  }
-
-  td {
-    position: relative;
-    padding: 16px 10px 16px 50%;
-    margin-bottom: 12px;
-    border: 1px solid #049afdcc;
-    background-color: #1c1c1c;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    font-size: 15px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-  }
-
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    font-weight: bold;
-    color: #00bfff;
+  #tabla {
     font-size: 13px;
-    text-align: left;
-    width: 45%;
-    white-space: normal;
   }
 
   td button {
-    display: inline-block;
-    width: 80%;
-    max-width: 240px;
-    font-size: 16px;
-    margin: 8px auto 0 auto;
-    padding: 10px 12px;
-    text-align: center;
+    font-size: 14px;
+    padding: 8px 10px;
+    width: auto;
   }
 
   .loader {
