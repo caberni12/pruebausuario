@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  background: linear-gradient(135deg, #0a0a0a, #0d0e0d);
 }
 
 form {
@@ -48,7 +48,7 @@ input {
 }
 
 input:focus {
-  border-color: #4CAF50;
+  border-color: #0f0f0f;
   outline: none;
 }
 
@@ -58,7 +58,7 @@ button {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
-  background: linear-gradient(90deg, #4CAF50, #2e7d32);
+  background: linear-gradient(90deg, #070707, #0d0e0d);
   color: white;
   border: none;
   border-radius: 30px;
@@ -67,7 +67,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(90deg, #43a047, #1b5e20);
+  background: linear-gradient(90deg, #0d0e0d, #141414);
   transform: scale(1.05);
 }
 
@@ -85,7 +85,7 @@ button:hover {
   top: 15px;
   left: 15px;
   font-size: 24px;
-  background-color: #4CAF50;
+  background-color: #0a0a0a;
   color: white;
   border: none;
   border-radius: 6px;
@@ -97,7 +97,7 @@ button:hover {
 }
 
 .menu-btn:hover {
-  background-color: #2e7d32;
+  background-color: #111111;
 }
 
 /* --- SLIDER LATERAL OCULTO --- */
@@ -140,7 +140,7 @@ button:hover {
   text-decoration: none;
   font-size: 16px;
   padding: 10px 15px;
-  background-color: #4CAF50;
+  background-color: #0c0c0c;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -149,7 +149,7 @@ button:hover {
 }
 
 .slider-content a:hover, .slider-content button:hover {
-  background-color: #388e3c;
+  background-color: #0a0a0a;
 }
 
 /* --- CONTENIDO PRINCIPAL --- */
@@ -171,4 +171,55 @@ button:hover {
   display: none; /* Se mostrará solo tras login */
   min-height: 100vh;
   background-color: #fff;
+}
+
+.login-container {
+  height: 100vh;
+ width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 120%;
+  max-width: 480px;
+}
+
+.logo-login {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Inputs y botón */
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
 }
